@@ -3,6 +3,16 @@ icon: lucide/scroll-text
 ---
 # Changelog
 
+## 2.8.3
+
+-   **FIX**: Fix inefficient attribute pattern.
+
+## 2.8.2
+
+-   **FIX**: Ensure custom selectors or namespace dictionaries reject non-string keys (@mundanevision20).
+-   **FIX**: Fix handling of `:in-range` and `:out-of-range` with end of year weeks (@mundanevision20).
+-   **FIX**: Fix a potential infinite loop in the pretty printing debug function (@mundanevision20).
+
 ## 2.8.1
 
 -   **FIX**: Changes in tests to accommodate latest Python HTML parser changes.
@@ -114,8 +124,7 @@ icon: lucide/scroll-text
 
 ## 1.9.6
 
-/// note | Last version for Python 2.7
-///
+> [!note] Last version for Python 2.7
 
 -   **FIX**: Prune dead code.
 -   **FIX**: Corner case with splitting namespace and tag name that have an escaped `|`.

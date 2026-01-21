@@ -155,22 +155,11 @@ class Namespaces(ImmutableDict):
     def _validate(self, arg: dict[str, str] | Iterable[tuple[str, str]]) -> None:
         """Validate arguments."""
 
-        if isinstance(arg, dict):
-            if not all(
-                isinstance(k, str) and isinstance(v, str)
-                for k, v in arg.items()
-            ):
-                raise TypeError(
-                    f'{self.__class__.__name__} keys and values must be Unicode strings'
-                )
-        elif not all(
+        if not all(
             isinstance(k, str) and isinstance(v, str)
-            for k, v in arg
+            for k, v in (arg.items() if isinstance(arg, dict) else arg)
         ):
-            raise TypeError(
-                f'{self.__class__.__name__} keys and values '
-                'must be Unicode strings'
-            )
+            raise TypeError(f'{self.__class__.__name__} values must be hashable')
 
 
 class CustomSelectors(ImmutableDict):
@@ -184,22 +173,11 @@ class CustomSelectors(ImmutableDict):
     def _validate(self, arg: dict[str, str] | Iterable[tuple[str, str]]) -> None:
         """Validate arguments."""
 
-        if isinstance(arg, dict):
-            if not all(
-                isinstance(k, str) and isinstance(v, str)
-                for k, v in arg.items()
-            ):
-                raise TypeError(
-                    f'{self.__class__.__name__} keys and values must be Unicode strings'
-                )
-        elif not all(
+        if not all(
             isinstance(k, str) and isinstance(v, str)
-            for k, v in arg
+            for k, v in (arg.items() if isinstance(arg, dict) else arg)
         ):
-            raise TypeError(
-                f'{self.__class__.__name__} keys and values '
-                'must be Unicode strings'
-            )
+            raise TypeError(f'{self.__class__.__name__} values must be hashable')
 
 
 class Selector(Immutable):
